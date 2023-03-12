@@ -20,4 +20,7 @@ public class PartyDtoRequest {
     private String ideology;
     @NotNull
     private LocalDate foundationDate;
+
+    public PartyDtoRequest(String partyName, String acronym, String ideology, String foundationDate) {
+    }
 }

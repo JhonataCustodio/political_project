@@ -30,4 +30,7 @@ public class Party {
     private LocalDate foundationDate;
     @OneToMany(mappedBy = "party")
     private List<Associate> associates;
+
+    public Party(String idParty, String partyName, String acronym, String ideology, String foundationDate) {
+    }
 }

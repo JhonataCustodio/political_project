@@ -17,4 +17,6 @@ public class PartyDtoResponse {
     private String ideology;
     private LocalDate foundationDate;
 
+    public PartyDtoResponse(String idParty, String partyName, String acronym, String ideology, String foundationDate) {
+    }
 }
