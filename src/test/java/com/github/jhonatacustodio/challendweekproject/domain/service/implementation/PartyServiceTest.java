@@ -4,6 +4,7 @@ import com.github.jhonatacustodio.challendweekproject.domain.dto.request.PartyDt
 import com.github.jhonatacustodio.challendweekproject.domain.dto.response.PartyDtoResponse;
 import com.github.jhonatacustodio.challendweekproject.domain.entity.Party;
 import com.github.jhonatacustodio.challendweekproject.domain.enums.Ideology;
+import com.github.jhonatacustodio.challendweekproject.domain.exceptionHandler.PartyNotFoundException;
 import com.github.jhonatacustodio.challendweekproject.domain.repository.PartyRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -70,6 +71,15 @@ class PartyServiceTest {
         Assertions.assertEquals(partyDtoResponse.getFoundationDate(), response.getFoundationDate());
 
         Mockito.verify(partyRepository, Mockito.times(1)).findById(ID_PARTY);
+    }
+    @Test
+    void  whenFindByIdTheReturnAnObjectNotFoundException(){
+        Mockito.when(partyRepository.findById(Mockito.anyString())).thenThrow(new PartyNotFoundException());
+        try{
+            partyService.getById(ID_PARTY);
+        } catch (Exception exception){
+            assertEquals(PartyNotFoundException.class, exception.getClass());
+        }
     }
 
     @Test
