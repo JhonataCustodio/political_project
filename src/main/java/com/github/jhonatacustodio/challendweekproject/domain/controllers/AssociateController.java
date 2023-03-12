@@ -26,6 +26,11 @@ public class AssociateController {
         AssociateDtoResponse associateDtoResponse = associateService.getById(id);
         return ResponseEntity.ok(associateDtoResponse);
     }
+    @GetMapping("/associates")
+    public ResponseEntity<List<AssociateDtoResponse>> getAllAssociate(){
+        List<AssociateDtoResponse> associateDtoResponses = associateService.getAllAssociate();
+        return ResponseEntity.ok(associateDtoResponses);
+    }
     @PutMapping("/associates/{id}")
     public ResponseEntity<AssociateDtoResponse> update(@Valid @PathVariable Integer id, @RequestBody AssociateDtoRequest request){
         AssociateDtoResponse associateDtoResponse = associateService.update(id, request);

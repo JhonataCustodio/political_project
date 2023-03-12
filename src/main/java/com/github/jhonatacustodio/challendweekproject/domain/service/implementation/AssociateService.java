@@ -80,4 +80,14 @@ public class AssociateService {
         associateRepository.delete(associate);
         return modelMapper.map(associate, AssociateDtoResponse.class);
     }
+    public List<AssociateDtoResponse> getAllAssociate(){
+        List<Associate> associates = associateRepository.findAll();
+        return associates.stream().map(
+                this::convertAssociateToDto
+        ).collect(Collectors.toList());
+    }
+    public AssociateDtoResponse convertAssociateToDto(Associate associate){
+        AssociateDtoResponse associateDtoResponse = modelMapper.map(associate, AssociateDtoResponse.class);
+        return associateDtoResponse;
+    }
 }
