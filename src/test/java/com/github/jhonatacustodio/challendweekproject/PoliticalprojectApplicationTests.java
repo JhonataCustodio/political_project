@@ -7,7 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 class PoliticalprojectApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void main() {
+		PoliticalprojectApplication.main(new String[]{});
 	}
 
 }
