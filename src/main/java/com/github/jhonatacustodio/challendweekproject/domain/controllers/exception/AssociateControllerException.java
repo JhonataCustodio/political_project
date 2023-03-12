@@ -49,7 +49,10 @@ public class AssociateControllerException {
         }
         MessageExceptionHandler msgError = new MessageExceptionHandler(
                 new Date(), HttpStatus.BAD_REQUEST.value(), stringBuilder.toString()
+
         );
+
         return  new ResponseEntity<>(msgError, HttpStatus.BAD_REQUEST);
     }
+
 }
