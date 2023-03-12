@@ -69,5 +69,15 @@ public class PartyService {
         partyRepository.delete(party);
         return modelMapper.map(party, PartyDtoResponse.class);
     }
+    public List<PartyDtoResponse> getAllParty(){
+        List<Party> parties = partyRepository.findAll();
+        return parties.stream().map(
+                this::convertPartyToDto
+        ).collect(Collectors.toList());
+    }
+    public PartyDtoResponse convertPartyToDto(Party party){
+        PartyDtoResponse partyDtoResponse = modelMapper.map(party, PartyDtoResponse.class);
+        return partyDtoResponse;
+    }
 
 }

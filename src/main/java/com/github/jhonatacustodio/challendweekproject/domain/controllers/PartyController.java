@@ -31,6 +31,11 @@ public class PartyController {
         PartyDtoResponse partyDtoResponse = partyService.getById(id);
         return ResponseEntity.ok(partyDtoResponse);
     }
+    @GetMapping("/parties")
+    public ResponseEntity<List<PartyDtoResponse>> getAllParty(){
+        List<PartyDtoResponse> partyDtoResponses = partyService.getAllParty();
+        return ResponseEntity.ok(partyDtoResponses);
+    }
     @PutMapping("/parties/{id}")
     public ResponseEntity<PartyDtoResponse> update(@Valid @PathVariable String id, @RequestBody PartyDtoRequest request){
         PartyDtoResponse partyDtoResponse = partyService.update(id, request);
