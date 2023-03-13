@@ -1,0 +1,717 @@
+openapi: 3.0.3
+info:
+  title: Swagger Political API - OpenAPI 3.0
+  description: |-
+    This is a simple api where it represents REST methods 
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: silvajhonata@live.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.11
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://petstore3.swagger.io/api/v3
+paths:
+  /parties:
+    get:
+      summary: Returning a Party class list
+      description: Returns an array of Party objects.
+      responses:
+        '200':
+          description: Succes return list party.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    idParty:
+                      type: string
+                      description: The Party ID.
+                    partyName:
+                      type: string
+                      description: The Party NAME.
+                    acronym:
+                      type: string
+                      description: The Party ACRONYM.
+                    ideology:
+                      type: string
+                      description: The Party IDEOLOGY.
+                    foundationDate:
+                      type: string
+                      format: date
+                      description: The Party FOUNDATION DATE.
+      tags:
+        - Parties
+  
+  /parties/{ideology}:
+    get:
+      summary: Returning a list of Party class with filter on ideology
+      description: Returns an array of Party objects.
+      operationId: getPatiesIdeology
+      parameters:
+        - name: ideology
+          in: path
+          description: ideology you want to filter.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Succes return list party.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    idParty:
+                      type: string
+                      description: The Party ID.
+                    partyName:
+                      type: string
+                      description: The Party NAME.
+                    acronym:
+                      type: string
+                      description: The Party ACRONYM.
+                    ideology:
+                      type: string
+                      description: The Party IDEOLOGY.
+                    foundationDate:
+                      type: string
+                      format: date
+                      description: The Party FOUNDATION DATE.
+      tags:
+        - Parties
+        
+  /parties/{idParty}:
+    get:
+      summary: Returning a list of Party class with filter on id
+      description: Returns an array of Party objects.
+      operationId: getPatiesIdParty
+      parameters:
+        - name: idParty
+          in: path
+          description: idParty you want to filter.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Succes return id party.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    idParty:
+                      type: string
+                      description: The Party ID.
+                    partyName:
+                      type: string
+                      description: The Party NAME.
+                    acronym:
+                      type: string
+                      description: The Party ACRONYM.
+                    ideology:
+                      type: string
+                      description: The Party IDEOLOGY.
+                    foundationDate:
+                      type: string
+                      format: date
+                      description: The Party FOUNDATION DATE.
+      tags:
+        - Parties
+        
+  /parties/{idParty}/associates:
+    get:
+      summary: Returning a list of Party class with filter on id
+      description: Returns an array of Party objects in associates.
+      operationId: getPatiesIdPartyAssociates
+      parameters:
+        - name: idParty
+          in: path
+          description: idParty you want to filter on associates.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Succes return id party.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    idParty:
+                      type: string
+                      description: The Party ID.
+                    partyName:
+                      type: string
+                      description: The Party NAME.
+                    acronym:
+                      type: string
+                      description: The Party ACRONYM.
+                    ideology:
+                      type: string
+                      description: The Party IDEOLOGY.
+                    foundationDate:
+                      type: string
+                      format: date
+                      description: The Party FOUNDATION DATE.
+      tags:
+        - Parties
+  
+  /partie:
+    post:
+      summary: Create a party
+      description: Method that has the function of creating a new object or a new party.
+      operationId: postParty
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                partyName:
+                  type: string
+                  description: The Party NAME.
+                acronym:
+                  type: string
+                  description: The Party ACRONYM.
+                ideology:
+                  type: string
+                  description: The Party IDEOLOGY.
+                foundationDate:
+                  type: string
+                  format: date
+                  description: The Party FOUNDATION DATE.
+              required:
+                - partyName
+                - acronym
+                - ideology
+                - foundationDate
+      responses:
+        '201':
+          description: Succes return id party.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    partyName:
+                      type: string
+                      description: The Party NAME.
+                    acronym:
+                      type: string
+                      description: The Party ACRONYM.
+                    ideology:
+                      type: string
+                      description: The Party IDEOLOGY.
+                    foundationDate:
+                      type: string
+                      format: date
+                      description: The Party FOUNDATION DATE.
+      tags:
+        - Parties
+        
+  /partie/{idParty}:
+    put:
+      summary: Update a party
+      description: Method that has the function of update a new object or a new party.
+      operationId: putParty
+      parameters:
+        - name: idParty
+          in: path
+          description: idParty that you want to edit in parties.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                partyName:
+                  type: string
+                  description: The Party NAME.
+                acronym:
+                  type: string
+                  description: The Party ACRONYM.
+                ideology:
+                  type: string
+                  description: The Party IDEOLOGY.
+                foundationDate:
+                  type: string
+                  format: date
+                  description: The Party FOUNDATION DATE.
+              required:
+                - partyName
+                - acronym
+                - ideology
+                - foundationDate
+      responses:
+        '200':
+          description: Succes return id party.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    idParty:
+                      type: string
+                    partyName:
+                      type: string
+                      description: The Party NAME.
+                    acronym:
+                      type: string
+                      description: The Party ACRONYM.
+                    ideology:
+                      type: string
+                      description: The Party IDEOLOGY.
+                    foundationDate:
+                      type: string
+                      format: date
+                      description: The Party FOUNDATION DATE.
+      tags:
+        - Parties
+  
+  /parties/{id}:
+    delete:
+      summary: Update a party
+      description: Method that has the function of delete a new object or a new party.
+      operationId: deleteParty
+      parameters:
+        - name: id
+          in: path
+          description: idParty that you want to edit in parties.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Succes return id party.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    idParty:
+                      type: string
+                    partyName:
+                      type: string
+                      description: The Party NAME.
+                    acronym:
+                      type: string
+                      description: The Party ACRONYM.
+                    ideology:
+                      type: string
+                      description: The Party IDEOLOGY.
+                    foundationDate:
+                      type: string
+                      format: date
+                      description: The Party FOUNDATION DATE.
+      tags:
+        - Parties
+  
+  /associates:
+    get:
+      summary: Returning a Associate class list
+      description: Returns an array of Associate objects.
+      responses:
+        '200':
+          description: Succes return list associate.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    fullName:
+                      type: string
+                      description: The Associate NAME.
+                    politicalOffice:
+                      type: string
+                      description: The Associate POLITICAL OFFICE.
+                    birthday:
+                      type: string
+                      format: date
+                      description: The Associate BIRTHDAY.
+                    sex:
+                      type: string
+                      description: The Associate SEX.
+      tags:
+        - Associates
+  
+  /associates/{fullName}:
+    get:
+      summary: Returning a Associate class list filter on fullName
+      description: Returns an array of Associate objects.
+      parameters:
+        - name: fullName
+          in: path
+          description: Full name that you want to filter.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Succes return list associate.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    fullName:
+                      type: string
+                      description: The Associate NAME.
+                    politicalOffice:
+                      type: string
+                      description: The Associate POLITICAL OFFICE.
+                    birthday:
+                      type: string
+                      format: date
+                      description: The Associate BIRTHDAY.
+                    sex:
+                      type: string
+                      description: The Associate SEX.
+      tags:
+        - Associates
+        
+  /associates/{politicalOffice}:
+    get:
+      summary: Returning a Associate class list filter on politicalOffice
+      description: Returns an array of Associate objects.
+      parameters:
+        - name: politicalOffice
+          in: path
+          description: Full politicalOffice that you want to filter.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Succes return list associate.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    fullName:
+                      type: string
+                      description: The Associate NAME.
+                    politicalOffice:
+                      type: string
+                      description: The Associate POLITICAL OFFICE.
+                    birthday:
+                      type: string
+                      format: date
+                      description: The Associate BIRTHDAY.
+                    sex:
+                      type: string
+                      description: The Associate SEX.
+      tags:
+        - Associates
+        
+  /associates/{id}:
+    get:
+      summary: Returning a Associate class list filter on id
+      description: Returns an array of Associate objects.
+      parameters:
+        - name: id
+          in: path
+          description: Full id that you want to filter.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Succes return list associate.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    fullName:
+                      type: string
+                      description: The Associate NAME.
+                    politicalOffice:
+                      type: string
+                      description: The Associate POLITICAL OFFICE.
+                    birthday:
+                      type: string
+                      format: date
+                      description: The Associate BIRTHDAY.
+                    sex:
+                      type: string
+                      description: The Associate SEX.
+      tags:
+        - Associates
+        
+  /associate:
+    post:
+      summary: Create a Associate
+      description: Method that has the function of creating a new object or a new associate.
+      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The Associate NAME.
+                politicalOffice:
+                  type: string
+                  description: The Associate POLITICAL OFFICE.
+                birthday:
+                  type: string
+                  format: date
+                  description: The Associate BIRTHDAY.
+                sex:
+                  type: string
+                  description: The Associate SEX.
+              required:
+                - name
+                - politicalOffice
+                - birthday
+                - sex
+      responses:
+        '201':
+          description: Succes return list associate.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    fullName:
+                      type: string
+                      description: The Associate NAME.
+                    politicalOffice:
+                      type: string
+                      description: The Associate POLITICAL OFFICE.
+                    birthday:
+                      type: string
+                      format: date
+                      description: The Associate BIRTHDAY.
+                    sex:
+                      type: string
+                      description: The Associate SEX.
+      tags:
+        - Associates
+        
+  /associate/{id}:
+    put:
+      summary: Update a Associate
+      description: Method that has the function of Update a new object or a new associate.
+      parameters:
+        - name: id
+          in: path
+          description: id that you want to edit in associate.
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: The Associate NAME.
+                politicalOffice:
+                  type: string
+                  description: The Associate POLITICAL OFFICE.
+                birthday:
+                  type: string
+                  format: date
+                  description: The Associate BIRTHDAY.
+                sex:
+                  type: string
+                  description: The Associate SEX.
+              required:
+                - name
+                - politicalOffice
+                - birthday
+                - sex
+      responses:
+        '200':
+          description: Succes return list associate.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    fullName:
+                      type: string
+                      description: The Associate NAME.
+                    politicalOffice:
+                      type: string
+                      description: The Associate POLITICAL OFFICE.
+                    birthday:
+                      type: string
+                      format: date
+                      description: The Associate BIRTHDAY.
+                    sex:
+                      type: string
+                      description: The Associate SEX.
+      tags:
+        - Associates
+        
+  /associate/{idAssociate}:
+    delete:
+      summary: Update a Associate
+      description: Method that has the function of delete a new object or a new associate.
+      parameters:
+        - name: idAssociate
+          in: path
+          description: id that you want to delete in associate.
+          required: true
+          schema:
+            type: string
+      
+      responses:
+        '200':
+          description: Succes return list associate.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    fullName:
+                      type: string
+                      description: The Associate NAME.
+                    politicalOffice:
+                      type: string
+                      description: The Associate POLITICAL OFFICE.
+                    birthday:
+                      type: string
+                      format: date
+                      description: The Associate BIRTHDAY.
+                    sex:
+                      type: string
+                      description: The Associate SEX.
+      tags:
+        - Associates
+  
+  /associate/parties:
+    post:
+      summary: Create a AssociateParty
+      description: Method that has the function of creating a new object or a new associate.
+      
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                idAssociate:
+                  type: integer
+                  description: The AssociateParty IDASSOCIATE.
+                idParty:
+                  type: string
+                  description: The AssociateParty IDPARTY.
+                
+              required:
+                - idAssociate
+                - idParty
+                
+      responses:
+        '201':
+          description: Succes return list associate party.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: The AssociateParty ID.
+                    idAssociate:
+                      type: integer
+                      description: The AssociateParty IDASSOCIATE.
+                    idParty:
+                      type: string
+                      description: The AssociateParty IDPARTY.
+                   
+      tags:
+        - Associates Parties
+  /associate/{idAssociate}/parties/{idParty}:
+    delete:
+      summary: Update a Associate
+      description: Method that has the function of delete a new object or a new associate.
+      parameters:
+        - name: idAssociate
+          in: path
+          description: id that you want to delete in associate.
+          required: true
+          schema:
+            type: integer
+        - name: idParty
+          in: path
+          description: id that you want to delete in associate.
+          required: true
+          schema:
+            type: string
+      
+      responses:
+        '200':
+          description: Succes return list associate party.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                      description: The AssociateParty ID.
+                    idAssociate:
+                      type: integer
+                      description: The AssociateParty IDASSOCIATE.
+                    idParty:
+                      type: string
+                      description: The AssociateParty IDPARTY.
+      tags:
+        - Associates Parties
+        
